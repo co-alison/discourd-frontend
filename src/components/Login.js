@@ -1,10 +1,14 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import loginService from "../services/login"
 import { Link, Navigate } from "react-router-dom"
 
-const Login = ({ user, setUser }) => {
+const Login = ({ user, setUser, setMessage, setError }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    useEffect(() => {
+        setMessage(null)
+    }, [email, password])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -20,8 +24,23 @@ const Login = ({ user, setUser }) => {
             setEmail('')
             setPassword('')
             console.log('Successfully logged in')
+            setMessage('Successfully logged in')
+            setError(false)
+            setTimeout(() => {
+                setMessage(null)
+            }, 3000)
+
         } catch (error) {
-            console.log(error)
+            if (!error?.response) {
+                setMessage('No server response')
+                setError(true)
+            } else if (error.response?.status === 401) {
+                setMessage('Invalid username or password')
+                setError(true)
+            } else {
+                setMessage('Login failed')
+                setError(true)
+            }
         }
     }
     return (

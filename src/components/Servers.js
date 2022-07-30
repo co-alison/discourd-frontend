@@ -4,7 +4,7 @@ import Select from "react-select";
 import Popup from "reactjs-popup";
 import emailService from "../services/email";
 
-const Servers = ({ user, setUser }) => {
+const Servers = ({ user, setMessage, setError }) => {
   const [servers, setServers] = useState([]);
   const [server, setServer] = useState(null);
   const [open, setOpen] = useState(false);
@@ -13,10 +13,7 @@ const Servers = ({ user, setUser }) => {
   const [url, setUrl] = useState('')
 
   useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem("loggedDiscourdUser");
-
     if (user) {
-    //   setUser(JSON.parse(loggedUserJSON))
       serverService.setToken(user.token);
       serverService.getAll().then((servers) => setServers(servers));
     }
@@ -43,7 +40,6 @@ const Servers = ({ user, setUser }) => {
     const serverArray = servers.filter((server) => server.name === serverName);
     setServer(serverArray[0]);
     setOpen((o) => !o);
-    console.log(server);
   };
 
   const handleSubmit = async (event) => {
@@ -62,8 +58,18 @@ const Servers = ({ user, setUser }) => {
           await emailService.sendEmail(addServerEmail)
           setServerName('')
           setUrl('')
+          setMessage('Server request sent successfully')
+          setError(false)
+          setTimeout(() => {
+              setMessage(null)
+          }, 3000)
       } catch (error) {
           console.log(error)
+          setMessage('Something went wrong. Try again or contact ubcdiscourd@gmail.com')
+          setError(true)
+          setTimeout(() => {
+              setMessage(null)
+          }, 5000)
       }
   }
 

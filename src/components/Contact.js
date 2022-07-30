@@ -1,7 +1,7 @@
 import { useState } from "react"
 import emailService from "../services/email"
 
-const Contact = () => {
+const Contact = ({ setNotification, setError }) => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [message, setMessage] = useState('')
@@ -20,8 +20,18 @@ const Contact = () => {
             setName('')
             setEmail('')
             setMessage('')
+            setNotification('Message received.')
+            setError(false)
+            setTimeout(() => {
+                setNotification(null)
+            }, 3000)
         } catch (error) {
             console.log(error)
+            setNotification('Something went wrong. Try again later or contact ubcdiscourd@gmail.com')
+            setError(true)
+            setTimeout(() => {
+                setNotification(null)
+            }, 5000)
         }
     }
     return (

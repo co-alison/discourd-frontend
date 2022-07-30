@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import signupService from '../services/signup'
 
-const SignUp = ({ user, setUser }) => {
+const SignUp = ({ user, setUser, setMessage, setError }) => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -19,8 +19,32 @@ const SignUp = ({ user, setUser }) => {
         try {
             const createdUser = await signupService.create(newUser)
             setUser(createdUser)
+            setMessage('Account successfully created')
+            setError(false)
+            setTimeout(() => {
+                setMessage(null)
+            }, 3000)
         } catch (error) {
             console.log(error)
+            if (error.response.status === 409) {
+                setMessage('This email has already been used')
+                setError(true)
+                setTimeout(() => {
+                    setMessage(null)
+                }, 5000)
+            } else if (error.response.status === 406) {
+                setMessage('Invalid UBC email')
+                setError(true)
+                setTimeout(() => {
+                    setMessage(null)
+                }, 5000)
+            } else {
+                setMessage('Something went wrong')
+                setError(true)
+                setTimeout(() => {
+                    setMessage(null)
+                }, 5000)
+            }
         }
     }
 

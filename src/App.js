@@ -8,10 +8,13 @@ import About from './components/About'
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Servers from './components/Servers';
+import Notification from './components/Notification';
 import serverService from './services/server';
 
 const App = () => {
   const [user, setUser] = useState(null)
+  const [message, setMessage] = useState(null)
+  const [isError, setError] = useState(false)
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedDiscourdUser')
@@ -25,14 +28,15 @@ const App = () => {
 
   return (
     <div className='container full-height-grow'>
+      <Notification message={message} isError={isError} />
       <NavBar user={user} setUser={setUser}/>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/" element={<Home user={user} />} />
+        <Route path="/contact" element={<Contact setNotification={setMessage} setError={setError} />} />
         <Route path="/about" element={<About />} />
-        <Route path='/login' element={<Login user={user} setUser={setUser} />} />
-        <Route path='/signup' element={<SignUp setUser={setUser} />} />
-        <Route path="/servers" element={<Servers user={user} setUser={setUser} />} />
+        <Route path='/login' element={<Login user={user} setUser={setUser} setMessage={setMessage} setError={setError} />} />
+        <Route path='/signup' element={<SignUp setUser={setUser} setMessage={setMessage} setError={setError} />} />
+        <Route path="/servers" element={<Servers user={user} setUser={setUser} setMessage={setMessage} setError={setError}/>} />
       </Routes>
       <Footer />
     </div>
