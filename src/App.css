@@ -1,38 +1,84 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #1F2034;
+    font-family: Poppins, sans-serif;
+    color: white;
+    min-height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.full-height-grow {
+    display: flex;
+    flex-direction: column;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.brand-logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.25em;
+    color: inherit;
+    text-decoration: none;
 }
 
-.App-link {
-  color: #61dafb;
+.brand-logo-name {
+    margin-left: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.no-user-nav {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.no-user-nav-link {
+    color: inherit;
+    text-decoration: none;
+    padding: 1rem;
+}
+
+.no-user-nav-link:hover {
+    color: #adadad;
+}
+
+.no-user-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 138px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    flex-grow: 1;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 3em;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.subtitle {
+    font-weight: 400;
+    font-size: 1.2em;
+    margin-bottom: 2rem;
+}
+
+.signup-btn {
+    color: white;
+    background-color: #5865F2;
+    padding: .75rem 1.5rem;
+    border-radius: .5rem;
+    border: none;
+    font-size: .9rem;
 }
