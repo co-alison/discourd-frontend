@@ -9,6 +9,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Servers from './components/Servers';
 import Notification from './components/Notification';
+import Welcome from './components/Welcome';
 import serverService from './services/server';
 
 const App = () => {
@@ -37,6 +38,7 @@ const App = () => {
         <Route path='/login' element={<Login user={user} setUser={setUser} setMessage={setMessage} setError={setError} />} />
         <Route path='/signup' element={<SignUp setUser={setUser} setMessage={setMessage} setError={setError} />} />
         <Route path="/servers" element={<Servers user={user} setUser={setUser} setMessage={setMessage} setError={setError}/>} />
+        <Route path="/confirm/:confirmationCode" element={<Welcome />} />
       </Routes>
       <Footer />
     </div>
