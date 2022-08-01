@@ -27,14 +27,14 @@ const NavBar = ({ user, setUser }) => {
                         <Link to="/logout" onClick={handleLogout}>Logout</Link>
                     </div>
                 ) : (
-                    <div className='no-user-header'>
+                    <div className='header'>
                         <Link to="/" className="brand-logo">
                             <img src={logo} alt="Discourd logo" />
                             <div className="brand-logo-name">Discourd</div>
                         </Link>
-                        <div className='no-user-nav'>
-                            <NavLink to="/login" className="no-user-nav-link">Login</NavLink>
-                            <NavLink to="/signup" className="no-user-nav-link">Sign Up</NavLink>
+                        <div className='nav'>
+                            <NavLink to="/login" className="nav-link">Login</NavLink>
+                            <NavLink to="/signup" className="nav-link">Sign Up</NavLink>
                         </div>
                     </div>
                 )

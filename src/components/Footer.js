@@ -2,11 +2,13 @@ import { Link } from "react-router-dom"
 
 const Footer = () => {
     return (
-        <div>
-            <Link to="/contact">Contact</Link>
-            <Link to="/about">About</Link>
-            <span>Icons by <a href="https://icons8.com/">icons8.com</a></span>
-        </div>
+        <footer>
+            <div className="footer">
+                    <Link to="/contact" className="nav-link">Contact</Link>
+                    <Link to="/about" className="nav-link">About</Link>
+                    <span style={{color: "#adadad"}}>Made by Alison Co</span>
+            </div>
+        </footer>
     )
 }
 

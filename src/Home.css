@@ -1,22 +1,22 @@
-.home {
+.cta-image {
     display: flex;
     align-items: stretch;
     justify-content: space-between;
     flex-grow: 1;
+    padding-bottom: 1em;
 }
 
-.home .img-wrapper {
+.cta-image .img-wrapper {
     flex-grow: 1;
-    flex-direction: column;
     display: flex;
+    flex-direction: column;
     align-items: stretch;
     justify-content: flex-end;
 }
 
-.home .discord-img {
+.cta-image .discord-img {
     background-image: url(images/landing-page-discord.png);
     flex-grow: 1;
-    max-height: 70vh;
     min-width: 30vw;
     background-size: contain;
     background-repeat: no-repeat;
@@ -45,6 +45,14 @@
 
 .home .call-to-action {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1rem;
+    align-self: center;
+}
+
+.home .community {
+    display:flex;
     flex-direction: column;
     align-items: flex-start;
     margin: 1rem;
