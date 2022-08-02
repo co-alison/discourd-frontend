@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './App.css'
 import './Home.css'
+import './SignUp.css'
+import './Login.css'
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 

@@ -13,6 +13,7 @@ body {
     font-family: Poppins, sans-serif;
     color: white;
     min-height: 100vh;
+    height: 100%;
 }
 
 .full-height-grow {
@@ -52,7 +53,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 138px;
+    height: 100px;
 }
 
 .footer {
@@ -62,9 +63,9 @@ body {
     background-color: #12121D;
     position: absolute;
     bottom: 0;
+    left: 0;
     height: 60px;
-    width: 100vw;
-    overflow: auto;
+    width: 100%;
 }
 
 .container {
@@ -72,6 +73,13 @@ body {
     margin: 0 auto;
     padding: 0 40px;
     flex-grow: 1;
+    min-height: 100%;
+    margin: 0 auto -60px;
+    position: relative;
+}
+
+.content {
+    padding-bottom: 60px;
 }
 
 .title {
@@ -94,4 +102,15 @@ body {
     border-radius: .5rem;
     border: none;
     font-size: .9rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.signup-btn:hover {
+    background-color: #6671f3;
+}
+
+.signup-btn:focus {
+    background-color: #7983f1;
 }

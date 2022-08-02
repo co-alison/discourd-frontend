@@ -1,7 +1,15 @@
 // import "../Home.css";
 // import "../App.css";
 
+import { useNavigate } from "react-router-dom";
+
 const Home = () => {
+  let navigate = useNavigate()
+  const navSignUp = () => {
+    const path = '/signup'
+        navigate(path)
+  }
+
   return (
     <div className="home">
       <section className="cta-image">
@@ -11,7 +19,7 @@ const Home = () => {
         <div className="call-to-action">
           <h1 className="title">Welcome to Discourd</h1>
           <span className="subtitle">All your UBC servers in one place</span>
-          <button className="signup-btn">Sign Up</button>
+          <button className="signup-btn" onClick={navSignUp}>Sign Up</button>
         </div>
       </section>
       <div className="community">
