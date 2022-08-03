@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
 import loginService from "../services/login"
-import { Link, Navigate, NavLink } from "react-router-dom"
+import { Navigate, NavLink, useNavigate } from "react-router-dom"
 
 const Login = ({ user, setUser, setMessage, setError }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    let navigate = useNavigate()
 
     useEffect(() => {
         setMessage(null)
@@ -30,6 +31,8 @@ const Login = ({ user, setUser, setMessage, setError }) => {
                 setMessage(null)
             }, 3000)
 
+            navigate('/servers')
+
         } catch (error) {
             if (!error?.response) {
                 setMessage('No server response')
@@ -45,9 +48,9 @@ const Login = ({ user, setUser, setMessage, setError }) => {
     }
     return (
         <section className="login-section">
-            {user && (
-                <Navigate to="/" replace="true" />
-            )}
+            {/* {user && (
+                <Navigate to="/servers" replace="true" />
+            )} */}
             <form onSubmit={handleSubmit} className="login-form">
                 <div className="input-group">
                     <label>Email:</label>

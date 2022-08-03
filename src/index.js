@@ -4,6 +4,8 @@ import './App.css'
 import './Home.css'
 import './SignUp.css'
 import './Login.css'
+import './Servers.css'
+import './Notification.css'
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 

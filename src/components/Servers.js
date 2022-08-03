@@ -73,13 +73,31 @@ const Servers = ({ user, setMessage, setError }) => {
       }
   }
 
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+      color: 'black'
+    }),
+    control: (provided) => ({
+      ...provided
+    }),
+    singleValue: (provided, state) => {
+      const opacity = state.isDisabled ? 0.5 : 1;
+      const transition = 'opacity 300ms';
+
+      return {...provided, opacity, transition}
+    }
+  }
+
   return (
-    <div>
-      <Select options={sortedNames} onChange={(option) => showPopup(option)} />
+    <div className="servers">
+      <div className="servers-select">
+        <Select options={sortedNames} styles={customStyles} onChange={(option) => showPopup(option)} />
+      </div>
       {server && (
         <Popup open={open} closeOnDocumentClick onClose={closeModal}>
           <div className="modal">
-            <button onClick={closeModal}>&times;</button>
+            <button onClick={closeModal} className="close" >&times;</button>
             <div className="header">Discord Invite Link</div>
             <div className="content">
               This will take you to the invite link for {server.name} (
@@ -87,48 +105,53 @@ const Servers = ({ user, setMessage, setError }) => {
             </div>
             <div className="actions">
               <button
-                className="button"
+                className="signup-btn"
                 onClick={() => {
                   window.open("https://www.google.com/", "_blank");
                 }}
               >
                 Ok
               </button>
-              <button className="button" onClick={closeModal}>
+              <button className="signup-btn" style={{backgroundColor: "gray"}} onClick={closeModal}>
                 Cancel
               </button>
             </div>
           </div>
         </Popup>
       )}
-      <Popup trigger={<button className="button">Add a server</button>} modal>
+      <Popup trigger={<button className="signup-btn">Add a server</button>} modal>
         {(close) => (
           <div className="modal">
-            <button onClick={close}>&times;</button>
+            <button onClick={close} className="close">&times;</button>
             <div className="header">Add a server</div>
             <div className="content">
               <span>
                 You will receive an email once the server has been verified. Remember to submit a permanent invite link.
               </span>
-              <form onSubmit={handleSubmit}>
-                Sever Name:
-                <input
-                  type="text"
-                  id="server-name"
-                  onChange={(e) => setServerName(e.target.value)}
-                  value={serverName}
-                  required
-                />
-                <br />
-                Invite Link:
-                <input
-                  type="text"
-                  id="url"
-                  onChange={(e) => setUrl(e.target.value)}
-                  value={url}
-                  required
-                />
-                <button type="submit">Submit</button>
+              <form className="server-form" onSubmit={handleSubmit}>
+                <div className="server-input-group">
+                  <label>Sever Name:</label>
+                  <input
+                    type="text"
+                    id="server-name"
+                    onChange={(e) => setServerName(e.target.value)}
+                    value={serverName}
+                    required
+                  />
+                </div>
+                <div className="server-input-group">
+                  <label>Invite Link:</label>
+                  <input
+                    type="text"
+                    id="url"
+                    onChange={(e) => setUrl(e.target.value)}
+                    value={url}
+                    required
+                  />
+                </div>
+                <div className="server-input-group">
+                  <button type="submit" className="signup-btn">Submit</button>
+                </div>
               </form>
             </div>
           </div>

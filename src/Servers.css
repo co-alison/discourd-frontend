@@ -1,0 +1,96 @@
+.popup-content {
+  background: #1F2034;
+  width: 70vw;
+  padding: 2em;
+}
+.popup-arrow {
+  color: rgb(255, 255, 255);
+}
+[role="tooltip"].popup-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-popup="tooltip"].popup-overlay {
+  background: transparent;
+}
+
+.servers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.servers-select {
+  min-width: 60vw;
+}
+
+.close-button:hover {
+  background-color: #6671f3;
+}
+
+.close-button:focus {
+  background-color: #7983f1;
+}
+
+.modal {
+  font-size: 14px;
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 20px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 5px;
+}
+.modal > .actions {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
+
+.server-form {
+  padding-top: 1rem;
+}
+
+.server-input-group {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.server-input-group label {
+  font-weight: bold;
+  margin-bottom: .5rem
+}
+
+.server-input-group input {
+  outline: none;
+  background: none;
+  border: 1px solid #5865F2;
+  font-size: 1em;
+  padding: .5em;
+  color: inherit;
+  border-radius: 5px;
+}

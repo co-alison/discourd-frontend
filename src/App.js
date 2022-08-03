@@ -31,7 +31,7 @@ const App = () => {
     <div>
       <div className="container full-height-grow">
         <Notification message={message} isError={isError} />
-        <NavBar user={user} setUser={setUser} />
+        <NavBar user={user} setUser={setUser} setMessage={setMessage} setError={setError}/>
         <div className="content">
           <Routes>
             <Route path="/" element={<Home user={user} />} />
@@ -77,8 +77,9 @@ const App = () => {
             <Route path="/confirm/:confirmationCode" element={<Welcome />} />
           </Routes>
         </div>
-        <Footer />
+        <div className="push"></div>
       </div>
+      <Footer /> 
     </div>
   );
 };
